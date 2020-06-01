@@ -17,6 +17,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 1.8
+      env:
+        twitter4j.oauth.consumerKey : ${{ secrets.OAUTH_ACCESSTOKEN }}
+        twitter4j.oauth.consumerSecret : ${{ secrets.OAUTH_ACCESSTOKENSECRET }} 
+        twitter4j.oauth.accessToken : ${{ secrets.OAUTH_CONSUMERKEY }} 
+        twitter4j.oauth.accessTokenSecrey : ${{ secrets.OAUTH_CONSUMERKEY }} 
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
