@@ -25,7 +25,7 @@ jobs:
     - name: Build and run with Gradle
       run: ./gradlew run
     env:
-      oauth.consumerKey : ${{ secrets.OAUTH_CONSUMERKEY }}
-      oauth.consumerSecret : ${{ secrets.OAUTH_CONSUMERSECRET }} 
-      oauth.accessToken : ${{ secrets.OAUTH_ACCESSTOKEN }} 
-      oauth.accessTokenSecrey : ${{ secrets.OAUTH_ACCESSTOKENSECRET }} 
+      oauth.consumerKey: ${{ secrets.OAUTH_CONSUMERKEY }}
+      oauth.consumerSecret: ${{ secrets.OAUTH_CONSUMERSECRET }} 
+      oauth.accessToken: ${{ secrets.OAUTH_ACCESSTOKEN }} 
+      oauth.accessTokenSecrey: ${{ secrets.OAUTH_ACCESSTOKENSECRET }} 
