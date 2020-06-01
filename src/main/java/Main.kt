@@ -5,13 +5,11 @@ import java.io.File
 import java.io.IOException
 import kotlin.system.exitProcess
 
+val isCi = (getEnv("CI") == "true")
+
 fun main() {
 
-    val isCi = (getEnv("CI") == "true")
-    if (isCi) {
-        println("this env is ci")
-        exitProcess(0)
-    }
+    getTwitterFactory()
 
     val twitter = TwitterFactory.getSingleton()
 
@@ -77,6 +75,22 @@ fun main() {
 
 fun getEnv(key: String): String {
     return System.getenv(key) ?: ""
+}
+
+fun getTwitterFactory() {
+
+    if (isCi) {
+        val consumerKey = getEnv("twitter4j.oauth.consumerKey")
+        val consumerSecret = getEnv("twitter4j.oauth.consumerSecret")
+        val accessToken = getEnv("twitter4j.oauth.accessToken")
+        val accessTokenSecret = getEnv("twitter4j.oauth.accessTokenSecret")
+
+        if (consumerKey.isBlank()) {
+
+            println("consumerKey is blank")
+            exitProcess(0)
+        }
+    }
 }
 
 private fun String.replaceBiggerSizeUrl(): String {
