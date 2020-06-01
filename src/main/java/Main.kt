@@ -3,6 +3,7 @@ import okio.Buffer
 import twitter4j.TwitterFactory
 import java.io.File
 import java.io.IOException
+import kotlin.system.exitProcess
 
 val isCi = (getEnv("CI") == "true")
 
@@ -79,7 +80,7 @@ fun getEnv(key: String): String {
 fun getTwitterFactory() {
 
     if (isCi) {
-        val consumerKey = getEnv("TWITTER4J.OAUTH.CONSUMERKEY")
+        val consumerKey = getEnv("twitter4j.oauth.consumerKey")
         val consumerSecret = getEnv("twitter4j.oauth.consumerSecret")
         val accessToken = getEnv("twitter4j.oauth.accessToken")
         val accessTokenSecret = getEnv("twitter4j.oauth.accessTokenSecret")
@@ -87,7 +88,7 @@ fun getTwitterFactory() {
         if (consumerKey.isBlank()) {
 
             println("consumerKey is blank")
-            throw IllegalStateException("consumerKey is blank")
+            exitProcess(0)
         }
     }
 }
