@@ -85,10 +85,10 @@ fun getTwitterFactory() {
             println("k-> $key v-> $value")
         }
 
-        val consumerKey = getEnv("twitter4j.oauth.consumerKey")
-        val consumerSecret = getEnv("twitter4j.oauth.consumerSecret")
-        val accessToken = getEnv("twitter4j.oauth.accessToken")
-        val accessTokenSecret = getEnv("twitter4j.oauth.accessTokenSecret")
+        val consumerKey = getEnv("OAUTH_CONSUMERKEY")
+        val consumerSecret = getEnv("OAUTH_CONSUMERSECRET")
+        val accessToken = getEnv("OAUTH_ACCESSTOKEN")
+        val accessTokenSecret = getEnv("OAUTH_ACCESSTOKENSECRET")
 
         if (consumerKey.isBlank()) {
 
