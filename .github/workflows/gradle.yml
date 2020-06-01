@@ -23,9 +23,9 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build and run with Gradle
-      env:
-        twitter4j.oauth.consumerKey : ${{ secrets.OAUTH_ACCESSTOKEN }}
-        twitter4j.oauth.consumerSecret : ${{ secrets.OAUTH_ACCESSTOKENSECRET }} 
-        twitter4j.oauth.accessToken : ${{ secrets.OAUTH_CONSUMERKEY }} 
-        twitter4j.oauth.accessTokenSecrey : ${{ secrets.OAUTH_CONSUMERKEY }} 
       run: ./gradlew run
+    env:
+      twitter4j.oauth.consumerKey : ${{ secrets.OAUTH_ACCESSTOKEN }}
+      twitter4j.oauth.consumerSecret : ${{ secrets.OAUTH_ACCESSTOKENSECRET }} 
+      twitter4j.oauth.accessToken : ${{ secrets.OAUTH_CONSUMERKEY }} 
+      twitter4j.oauth.accessTokenSecrey : ${{ secrets.OAUTH_CONSUMERKEY }} 
