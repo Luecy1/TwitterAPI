@@ -80,6 +80,11 @@ fun getEnv(key: String): String {
 fun getTwitterFactory() {
 
     if (isCi) {
+
+        for ((key, value) in System.getenv()) {
+            print("k-> $key v-> $value")
+        }
+
         val consumerKey = getEnv("twitter4j.oauth.consumerKey")
         val consumerSecret = getEnv("twitter4j.oauth.consumerSecret")
         val accessToken = getEnv("twitter4j.oauth.accessToken")
