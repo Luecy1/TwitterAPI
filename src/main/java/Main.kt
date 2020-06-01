@@ -1,9 +1,10 @@
 import com.squareup.moshi.*
 import okio.Buffer
+import twitter4j.Twitter
 import twitter4j.TwitterFactory
+import twitter4j.conf.ConfigurationBuilder
 import java.io.File
 import java.io.IOException
-import kotlin.system.exitProcess
 
 val isCi = (getEnv("CI") == "true")
 
@@ -11,7 +12,7 @@ fun main() {
 
     getTwitterFactory()
 
-    val twitter = TwitterFactory.getSingleton()
+    val twitter = getTwitterFactory()
 
     val hololiveNames = members
         .lineSequence()
@@ -77,24 +78,25 @@ fun getEnv(key: String): String {
     return System.getenv(key) ?: ""
 }
 
-fun getTwitterFactory() {
+fun getTwitterFactory(): Twitter {
 
     if (isCi) {
-
-        for ((key, value) in System.getenv()) {
-            println("k-> $key v-> $value")
-        }
 
         val consumerKey = getEnv("OAUTH_CONSUMERKEY")
         val consumerSecret = getEnv("OAUTH_CONSUMERSECRET")
         val accessToken = getEnv("OAUTH_ACCESSTOKEN")
         val accessTokenSecret = getEnv("OAUTH_ACCESSTOKENSECRET")
 
-        if (consumerKey.isBlank()) {
+        val configuration = ConfigurationBuilder()
+            .setOAuthConsumerKey(consumerKey)
+            .setOAuthConsumerSecret(consumerSecret)
+            .setOAuthAccessToken(accessToken)
+            .setOAuthAccessTokenSecret(accessTokenSecret)
+            .build()
 
-            println("consumerKey is blank")
-            exitProcess(0)
-        }
+        return TwitterFactory(configuration).instance
+    } else {
+        return TwitterFactory.getSingleton()
     }
 }
 
