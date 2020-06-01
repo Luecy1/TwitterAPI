@@ -28,4 +28,4 @@ jobs:
       oauth.consumerKey: ${{ secrets.OAUTH_CONSUMERKEY }}
       oauth.consumerSecret: ${{ secrets.OAUTH_CONSUMERSECRET }} 
       oauth.accessToken: ${{ secrets.OAUTH_ACCESSTOKEN }} 
-      oauth.accessTokenSecrey: ${{ secrets.OAUTH_ACCESSTOKENSECRET }} 
+      oauth.accessTokenSecret: ${{ secrets.OAUTH_ACCESSTOKENSECRET }} 
