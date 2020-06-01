@@ -3,8 +3,15 @@ import okio.Buffer
 import twitter4j.TwitterFactory
 import java.io.File
 import java.io.IOException
+import kotlin.system.exitProcess
 
 fun main() {
+
+    val isCi = (getEnv("CI") == "true")
+    if (isCi) {
+        println("this env is ci")
+        exitProcess(0)
+    }
 
     val twitter = TwitterFactory.getSingleton()
 
@@ -66,6 +73,10 @@ fun main() {
 
     File("public/members.json").writeText(toPretty(adapter, hololiveMemberList))
 
+}
+
+fun getEnv(key: String): String {
+    return System.getenv(key) ?: ""
 }
 
 private fun String.replaceBiggerSizeUrl(): String {
