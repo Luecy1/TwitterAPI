@@ -25,8 +25,7 @@ jobs:
     - name: Build and run with Gradle
       run: ./gradlew run
       env:
-        CONSUMERKEY: ${{ secrets.OAUTH_CONSUMERKEY }}
-        twitter4j.oauth.consumerKey: ${{ secrets.OAUTH_CONSUMERKEY }}
-        twitter4j.oauth.consumerSecret: ${{ secrets.OAUTH_CONSUMERSECRET }} 
-        twitter4j.oauth.accessToken: ${{ secrets.OAUTH_ACCESSTOKEN }} 
-        twitter4j.oauth.accessTokenSecret: ${{ secrets.OAUTH_ACCESSTOKENSECRET }} 
+        OAUTH_CONSUMERKEY: ${{ secrets.OAUTH_CONSUMERKEY }}
+        OAUTH_CONSUMERSECRET: ${{ secrets.OAUTH_CONSUMERSECRET }}
+        OAUTH_ACCESSTOKEN: ${{ secrets.OAUTH_ACCESSTOKEN }} 
+        OAUTH_ACCESSTOKENSECRET: ${{ secrets.OAUTH_ACCESSTOKENSECRET }} 
