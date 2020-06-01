@@ -82,7 +82,7 @@ fun getTwitterFactory() {
     if (isCi) {
 
         for ((key, value) in System.getenv()) {
-            print("k-> $key v-> $value")
+            println("k-> $key v-> $value")
         }
 
         val consumerKey = getEnv("twitter4j.oauth.consumerKey")
