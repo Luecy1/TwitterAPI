@@ -29,3 +29,8 @@ jobs:
         OAUTH_CONSUMERSECRET: ${{ secrets.OAUTH_CONSUMERSECRET }}
         OAUTH_ACCESSTOKEN: ${{ secrets.OAUTH_ACCESSTOKEN }} 
         OAUTH_ACCESSTOKENSECRET: ${{ secrets.OAUTH_ACCESSTOKENSECRET }} 
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
