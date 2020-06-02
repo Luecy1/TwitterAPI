@@ -65,8 +65,6 @@ fun main() {
         .add(KotlinJsonAdapterFactory())
         .build().adapter<List<HololiveMember>>(type)
 
-//    println(adapter.toJson(hololiveMemberList))
-
     print(toPretty(adapter, hololiveMemberList))
 
 
