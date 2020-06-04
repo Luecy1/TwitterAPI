@@ -52,7 +52,7 @@ fun main() {
         val hololiveMember = HololiveMember(
             id = (index + 1),
             name = hololiveNames[index],
-            imageUrl = user.profileImageURL.replaceBiggerSizeUrl(),
+            imageUrl = user.profileImageURL.replaceBiggerSizeUrl().toHttps(),
             generation = hololiveGenerations[index]
         )
 
@@ -100,6 +100,14 @@ fun getTwitterFactory(): Twitter {
 
 private fun String.replaceBiggerSizeUrl(): String {
     return this.replace("normal", "400x400")
+}
+
+private fun String.toHttps(): String {
+    return if (!this.startsWith("https://")) {
+        this.replace("http://", "https://")
+    } else {
+        this
+    }
 }
 
 private fun toPretty(adapter: JsonAdapter<List<HololiveMember>>, member: List<HololiveMember>): String {
