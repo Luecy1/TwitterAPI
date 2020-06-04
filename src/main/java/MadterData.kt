@@ -3,7 +3,7 @@ val members = """
 ロボ子さん	robocosan   1
 さくらみこ   sakuramiko35    1
 星街すいせい  suisei_hosimati 1
-白神フブキ	shirakamifubuki 0,4
+白神フブキ	shirakamifubuki 2,4
 夏色まつり   natsuiromatsuri    2
 赤井はあと	akaihaato   2
 湊あくあ	minatoaqua  3
